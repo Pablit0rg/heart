@@ -31,7 +31,6 @@
       transition: transform 0.3s ease; z-index: 10;
       position: relative;
     }
-    /* Área de clique expandida */
     .magic-dot::after {
       content: ''; position: absolute;
       top: -15px; left: -15px; right: -15px; bottom: -15px;
@@ -173,13 +172,13 @@
 
   <div id="screen-dashboard" class="panel">
     <div class="panel-title" style="color:#ccc; border-color:#333;">STATUS: ONLINE</div>
-    <p style="font-size: 0.9rem; color: #aaa;">Aguardando instrução de despertar...</p>
+    <p style="font-size: 0.9rem; color: #aaa;">Aguardando instrução...</p>
     
     <div class="terminal-display">
         <span class="prompt-text">></span>
         <input type="text" id="input-cmd-1" class="terminal-input-clean" placeholder="sys.call --target..." autocomplete="off">
     </div>
-    <p style="font-size: 0.75rem; color: #555;">Ex: sys.call --target "sagaz"</p>
+    <p style="font-size: 0.75rem; color: #555;">Syntax: sys.call --target "codinome"</p>
     
     <p id="error-cmd-1" class="error-msg">Comando desconhecido.</p>
     <button id="btn-cmd-1" class="btn-action">EXECUTAR</button>
@@ -214,7 +213,6 @@
 
   <script>
     // --- CONFIGURAÇÃO ---
-    // ATUALIZADO: Senha nova e comando 'sagaz'
     const CREDENTIALS = { user: "payblow", pass: "Ilikeyouandlovemoney!" };
     const CMD_FINAL = "sudo apt-get install love";
     let realPassStorage = "";
@@ -298,7 +296,6 @@
       }
     });
 
-    // ATUALIZADO: Validação para 'sagaz'
     document.getElementById('btn-cmd-1').addEventListener('click', () => {
       const val = inputs.cmd1.value.toLowerCase();
       if (val.includes('sagaz')) {
