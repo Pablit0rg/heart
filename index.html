@@ -23,21 +23,17 @@
     
     /* --- 1. O PONTO MISTERIOSO (DOT) --- */
     .magic-dot {
-      /* VOLTAMOS PARA 20px AQUI */
       width: 20px; height: 20px;
       background-color: #f23f3f;
       border-radius: 50%; cursor: pointer;
       box-shadow: 0 0 0 0 rgba(242, 63, 63, 0.7);
       animation: pulse-red 2s infinite;
       transition: transform 0.3s ease; z-index: 10;
-      
-      /* Dica UX: Aumenta a área de clique transparente para facilitar no celular */
       position: relative;
     }
-    /* Cria uma área invisível de clique maior ao redor do ponto pequeno */
+    /* Área de clique expandida */
     .magic-dot::after {
-      content: '';
-      position: absolute;
+      content: ''; position: absolute;
       top: -15px; left: -15px; right: -15px; bottom: -15px;
     }
 
@@ -45,7 +41,7 @@
     
     @keyframes pulse-red {
       0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(242, 63, 63, 0.7); }
-      70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(242, 63, 63, 0); } /* Ajustado para 15px */
+      70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(242, 63, 63, 0); }
       100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(242, 63, 63, 0); }
     }
 
@@ -57,23 +53,17 @@
       border: 1px solid rgba(242, 63, 63, 0.4);
       border-radius: 16px;
       padding: 30px 25px;
-      
-      width: 90%;        
-      max-width: 400px;  
-      
+      width: 90%; max-width: 400px;
       box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 15px rgba(242, 63, 63, 0.1);
       text-align: center;
       display: flex; flex-direction: column; gap: 15px;
-      
       opacity: 0;
       transform: translateY(20px) scale(0.95);
       transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
       display: none;
     }
 
-    .panel.active {
-      display: flex; opacity: 1; transform: translateY(0) scale(1);
-    }
+    .panel.active { display: flex; opacity: 1; transform: translateY(0) scale(1); }
 
     /* --- ELEMENTOS INTERNOS --- */
     .panel-title {
@@ -189,7 +179,7 @@
         <span class="prompt-text">></span>
         <input type="text" id="input-cmd-1" class="terminal-input-clean" placeholder="sys.call --target..." autocomplete="off">
     </div>
-    <p style="font-size: 0.75rem; color: #555;">Dica: chamar a atencao da preta...</p>
+    <p style="font-size: 0.75rem; color: #555;">Ex: sys.call --target "sagaz"</p>
     
     <p id="error-cmd-1" class="error-msg">Comando desconhecido.</p>
     <button id="btn-cmd-1" class="btn-action">EXECUTAR</button>
@@ -224,7 +214,8 @@
 
   <script>
     // --- CONFIGURAÇÃO ---
-    const CREDENTIALS = { user: "payblow", pass: "Ilikeyouandam0ney!" };
+    // ATUALIZADO: Senha nova e comando 'sagaz'
+    const CREDENTIALS = { user: "payblow", pass: "Ilikeyouandlovemoney!" };
     const CMD_FINAL = "sudo apt-get install love";
     let realPassStorage = "";
 
@@ -307,9 +298,10 @@
       }
     });
 
+    // ATUALIZADO: Validação para 'sagaz'
     document.getElementById('btn-cmd-1').addEventListener('click', () => {
       const val = inputs.cmd1.value.toLowerCase();
-      if (val.includes('preta') && val.includes('linda')) {
+      if (val.includes('sagaz')) {
         switchScreen(screens.dashboard, screens.question);
       } else {
         showError(errors.cmd1, "Comando não reconhecido.");
