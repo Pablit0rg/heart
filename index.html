@@ -176,9 +176,9 @@
     
     <div class="terminal-display">
         <span class="prompt-text">></span>
-        <input type="text" id="input-cmd-1" class="terminal-input-clean" placeholder="sys.call --target..." autocomplete="off">
+        <input type="text" id="input-cmd-1" class="terminal-input-clean" placeholder="waiting_input..." autocomplete="off">
     </div>
-    <p style="font-size: 0.75rem; color: #555;">Syntax: sys.call --target "codinome"</p>
+    <p style="font-size: 0.75rem; color: #555;">> Action: Identify Subject Alias</p>
     
     <p id="error-cmd-1" class="error-msg">Comando desconhecido.</p>
     <button id="btn-cmd-1" class="btn-action">EXECUTAR</button>
@@ -298,6 +298,7 @@
 
     document.getElementById('btn-cmd-1').addEventListener('click', () => {
       const val = inputs.cmd1.value.toLowerCase();
+      // Mantivemos a validação simples: se conter 'sagaz', passa.
       if (val.includes('sagaz')) {
         switchScreen(screens.dashboard, screens.question);
       } else {
